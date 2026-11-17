@@ -43,3 +43,26 @@ API REST desenvolvida com **JavaScript (ES Modules)** e **Hono**, hospedada no *
 1. **Instale as dependências:**
    ```bash
    npm install
+
+   Autentique no Wrangler e crie o banco D1:
+
+npx wrangler login
+npx wrangler d1 create clientes-favoritos-db
+
+
+Copie o database_id gerado no terminal e cole no campo "database_id" do arquivo wrangler.jsonc.
+
+Crie as tabelas no D1 (local e remoto):
+
+npm run db:local
+npm run db:remote
+
+
+Execute localmente para testar:
+
+npm run dev
+
+
+Publique na Cloudflare:
+
+npm run deploy
