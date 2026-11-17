@@ -1,0 +1,15 @@
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "clientes-favoritos-api",
+	"main": "src/index.js",
+	"compatibility_date": "2026-11-01",
+	"d1_databases": [
+		
+		
+		{
+			"binding": "DB",
+			"database_name": "clientes-favoritos-db",
+			"database_id": "fdd26f87-1290-4f08-9bda-c02b3c5b79d2"
+		}
+	]
+}
