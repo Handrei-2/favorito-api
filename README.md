@@ -3,21 +3,22 @@
 API REST desenvolvida com **JavaScript (ES Modules)** e **Hono**, hospedada no **Cloudflare Workers**, com persistência no **Cloudflare D1** e integração com a **Fake Store API**.
 
 ## URL da API Publicada
-`https://clientes-favoritos-api.<seu-subdominio>.workers.dev`
+`https://clientes-favoritos-api.handreimendonca5.workers.dev`
 
 ## Tecnologias Utilizadas
 - JavaScript (ES Modules) & Hono
 - Cloudflare Workers & Wrangler
 - Cloudflare D1 (SQLite distribuído)
-- Web Crypto API (PBKDF2 + Salt para hash seguro de senhas)
+- Web Crypto API (PBKDF2 + Salt para hash e verificação segura de senhas)
 - Fake Store API
 
 ## Endpoints
 
-### Clientes
+### Clientes & Autenticação
 | Método | Rota | Descrição |
 | :--- | :--- | :--- |
 | `POST` | `/clients` | Cadastra um novo cliente (`name`, `email`, `password`) |
+| `POST` | `/clients/login` | Autentica um cliente existente via `email` e `password` |
 | `GET` | `/clients` | Lista todos os clientes cadastrados |
 | `GET` | `/clients/:id` | Consulta um cliente específico por ID |
 | `PUT` | `/clients/:id` | Atualiza dados de um cliente |
@@ -42,27 +43,3 @@ API REST desenvolvida com **JavaScript (ES Modules)** e **Hono**, hospedada no *
 1. **Instale as dependências:**
    ```bash
    npm install
-   ```
-
-2. **Autentique no Wrangler e crie o banco D1:**
-   ```bash
-   npx wrangler login
-   npx wrangler d1 create clientes-favoritos-db
-   ```
-   Copie o `database_id` gerado no terminal e cole no campo `"database_id"` do arquivo `wrangler.jsonc`.
-
-3. **Crie as tabelas no D1 (local e remoto):**
-   ```bash
-   npm run db:local
-   npm run db:remote
-   ```
-
-4. **Execute localmente para testar:**
-   ```bash
-   npm run dev
-   ```
-
-5. **Publique na Cloudflare:**
-   ```bash
-   npm run deploy
-   ```
